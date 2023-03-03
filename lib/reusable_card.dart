@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 class ReusableCard extends StatelessWidget {
-  ReusableCard({required this.rang, required this.cardChild, required this.onPress});
+  ReusableCard({required this.rang, required this.cardChild , required this.onPress});
   final Color rang;
   final Widget cardChild;
   // final Function onPress; this is showing a error saying that this makes the code onTap: onPress makes take a function with a parameter but ontap doesnot expects it, It expects void funciton so added the   final VoidCallback onPress; to make it void function.

@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable_card.dart';
 import 'icon_content.dart';
-
-const bottomContainerHeight = 80.0;
-const activeCardColor = Color(0xFF1D1E33);
-// const activeCardColor = Colors.amber;
-const bottomContainerColor = Color(0xFFEB1555);
-const inactiveCardColor = Color(0xFF111328);
+import 'constants.dart';
 
 enum Gender {
   male,
@@ -40,7 +35,7 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = Gender.male;
                       });
                     },
-                    rang: selectedGender == Gender.male ? activeCardColor : inactiveCardColor,
+                    rang: selectedGender == Gender.male ? kactiveCardColor : kinactiveCardColor,
                     cardChild: iconContent(
                       icon: FontAwesomeIcons.mars,
                       label: "MALE",
@@ -54,7 +49,7 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = Gender.female;
                       });
                     },
-                    rang: selectedGender == Gender.female ? activeCardColor : inactiveCardColor,
+                    rang: selectedGender == Gender.female ? kactiveCardColor : kinactiveCardColor,
                     cardChild: iconContent(
                       icon: FontAwesomeIcons.venus,
                       label: "FEMALE",
@@ -68,8 +63,8 @@ class _InputPageState extends State<InputPage> {
                 onPress: () {
                   
                 },
-                rang: activeCardColor,
-                cardChild: Text("Hello there"),
+                rang: kactiveCardColor,
+              cardChild: Text("Hello there"),
               ),
             ),
             Expanded(
@@ -80,7 +75,7 @@ class _InputPageState extends State<InputPage> {
                       onPress: () {
                         
                       },
-                      rang: activeCardColor,
+                      rang: kactiveCardColor,
                       cardChild: Text("Hello there"),
                     ),
                   ),
@@ -89,7 +84,7 @@ class _InputPageState extends State<InputPage> {
                       onPress: () {
                         
                       },
-                      rang: activeCardColor,
+                      rang: kactiveCardColor,
                       cardChild: Text("Hello there"),
                     ),
                   ),
@@ -97,11 +92,11 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
             Container(
-              color: bottomContainerColor,
+              color: kbottomContainerColor,
               margin: EdgeInsets.only(top: 10.0),
               width: double
                   .infinity, //this code changes the bottom width to devices max device width.
-              height: bottomContainerHeight,
+              height: kbottomContainerHeight,
             )
           ],
         ));
