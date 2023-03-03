@@ -4,8 +4,11 @@ import 'reusable_card.dart';
 import 'icon_content.dart';
 
 const bottomContainerHeight = 80.0;
-const activeCardColor = Color(0xFF1D1E33);
+// const activeCardColor = Color(0xFF1D1E33);
+const activeCardColor = Colors.amber;
 const bottomContainerColor = Color(0xFFEB1555);
+const inactiveCardColor = Color(0xFF111328);
+
 
 class InputPage extends StatefulWidget {
   @override
@@ -13,6 +16,21 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  int gender= 0;
+  Color maleCardColor = inactiveCardColor;
+  Color femaleCardColor = inactiveCardColor;
+  void updateColor(int gender) {
+    if(gender == 1){
+      if(maleCardColor == inactiveCardColor){
+        maleCardColor = activeCardColor;
+        femaleCardColor = inactiveCardColor;
+      }
+      else{
+        femaleCardColor = activeCardColor;
+        maleCardColor = inactiveCardColor;
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,31 +43,61 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(rang: activeCardColor,
-                  cardChild: iconContent(icon: FontAwesomeIcons.mars, label: "MALE",),
+                  child: GestureDetector(
+                    onTap: (() {
+                      setState(() {
+                        updateColor(1);
+                      });
+                      print("Male clicked");
+                    }),
+                    child: ReusableCard(
+                      rang: maleCardColor,
+                      cardChild: iconContent(
+                        icon: FontAwesomeIcons.mars,
+                        label: "MALE",
+                      ),
+                    ),
                   ),
-
                 ),
                 Expanded(
-                  child: ReusableCard(rang: activeCardColor,
-                  cardChild: iconContent(icon: FontAwesomeIcons.venus, label: "FEMALE",),),
+                  child: GestureDetector(
+                    onTap: (() {
+                      setState(() {
+                        updateColor(2);
+                      });
+                      print("Female gender chosen.");
+                    }),
+                    child: ReusableCard(
+                      rang: femaleCardColor,
+                      cardChild: iconContent(
+                        icon: FontAwesomeIcons.venus,
+                        label: "FEMALE",
+                      ),
+                    ),
+                  ),
                 ),
               ],
             )),
             Expanded(
-              child:ReusableCard(rang: activeCardColor,
-              cardChild: Text("Hello there"),),
+              child: ReusableCard(
+                rang: activeCardColor,
+                cardChild: Text("Hello there"),
+              ),
             ),
             Expanded(
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: ReusableCard(rang: activeCardColor,
-                    cardChild: Text("Hello there"),),
+                    child: ReusableCard(
+                      rang: activeCardColor,
+                      cardChild: Text("Hello there"),
+                    ),
                   ),
                   Expanded(
-                    child: ReusableCard(rang: activeCardColor,
-                    cardChild: Text("Hello there"),),
+                    child: ReusableCard(
+                      rang: activeCardColor,
+                      cardChild: Text("Hello there"),
+                    ),
                   ),
                 ],
               ),
@@ -57,12 +105,11 @@ class _InputPageState extends State<InputPage> {
             Container(
               color: bottomContainerColor,
               margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity, //this code changes the bottom width to devices max device width.
+              width: double
+                  .infinity, //this code changes the bottom width to devices max device width.
               height: bottomContainerHeight,
             )
           ],
         ));
   }
 }
-
-
