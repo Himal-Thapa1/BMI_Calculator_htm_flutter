@@ -4,11 +4,7 @@ import 'reusable_card.dart';
 import 'icon_content.dart';
 import 'constants.dart';
 
-enum Gender {
-  male,
-  female,
-  others
-}
+enum Gender { male, female, others }
 
 class InputPage extends StatefulWidget {
   @override
@@ -16,6 +12,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  int height = 170;
   Gender selectedGender = Gender.others;
   @override
   Widget build(BuildContext context) {
@@ -35,7 +32,9 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = Gender.male;
                       });
                     },
-                    rang: selectedGender == Gender.male ? kactiveCardColor : kinactiveCardColor,
+                    rang: selectedGender == Gender.male
+                        ? kactiveCardColor
+                        : kinactiveCardColor,
                     cardChild: iconContent(
                       icon: FontAwesomeIcons.mars,
                       label: "MALE",
@@ -49,7 +48,9 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = Gender.female;
                       });
                     },
-                    rang: selectedGender == Gender.female ? kactiveCardColor : kinactiveCardColor,
+                    rang: selectedGender == Gender.female
+                        ? kactiveCardColor
+                        : kinactiveCardColor,
                     cardChild: iconContent(
                       icon: FontAwesomeIcons.venus,
                       label: "FEMALE",
@@ -60,11 +61,44 @@ class _InputPageState extends State<InputPage> {
             )),
             Expanded(
               child: ReusableCard(
-                onPress: () {
-                  
-                },
+                onPress: () {},
                 rang: kactiveCardColor,
-              cardChild: Text("Hello there"),
+                cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "HEIGHT",
+                      style: klabelTextStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: <Widget>[
+                        Text(
+                          height.toString(),
+                          style: knumberStyle,
+                        ),
+                        Text(
+                          "cm",
+                          style: klabelTextStyle,
+                        )
+                      ],
+                    ),
+                    Slider(
+                      value: height.toDouble(), 
+                    min: kminHeight.toDouble(),
+                    max: kmaxHeight.toDouble(),
+                    activeColor: kbottomContainerColor,
+                    inactiveColor: Color(0xFF8D8E98),
+                     onChanged:(double newValue) {
+                      setState(() {
+                        height = newValue.round();
+                      });
+                     }
+                     ),
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -72,18 +106,14 @@ class _InputPageState extends State<InputPage> {
                 children: <Widget>[
                   Expanded(
                     child: ReusableCard(
-                      onPress: () {
-                        
-                      },
+                      onPress: () {},
                       rang: kactiveCardColor,
                       cardChild: Text("Hello there"),
                     ),
                   ),
                   Expanded(
                     child: ReusableCard(
-                      onPress: () {
-                        
-                      },
+                      onPress: () {},
                       rang: kactiveCardColor,
                       cardChild: Text("Hello there"),
                     ),
