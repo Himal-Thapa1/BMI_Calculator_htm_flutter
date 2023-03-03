@@ -22,27 +22,6 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.others;
-  // int gender = 0;
-  // Color maleCardColor = inactiveCardColor;
-  // Color femaleCardColor = inactiveCardColor;
-  // void updateColor(Gender selectedgender) {
-  //   if (selectedgender == Gender.male) {
-  //     if (maleCardColor == inactiveCardColor) {
-  //       maleCardColor = activeCardColor;
-  //       femaleCardColor = inactiveCardColor;
-  //     } else {
-  //       maleCardColor = inactiveCardColor;
-  //     }
-  //   } else {
-  //     if (femaleCardColor == inactiveCardColor) {
-  //       femaleCardColor = activeCardColor;
-  //       maleCardColor = inactiveCardColor;
-  //     } else {
-  //       femaleCardColor = inactiveCardColor;
-  //     }
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,36 +34,30 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
               children: <Widget>[
                 Expanded(
-                  child: GestureDetector(
-                    onTap: (() {
+                  child: ReusableCard(
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.male;
                       });
-                      print("Male clicked");
-                    }),
-                    child: ReusableCard(
-                      rang: selectedGender == Gender.male ? activeCardColor : inactiveCardColor,
-                      cardChild: iconContent(
-                        icon: FontAwesomeIcons.mars,
-                        label: "MALE",
-                      ),
+                    },
+                    rang: selectedGender == Gender.male ? activeCardColor : inactiveCardColor,
+                    cardChild: iconContent(
+                      icon: FontAwesomeIcons.mars,
+                      label: "MALE",
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: (() {
+                  child: ReusableCard(
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
                       });
-                      print("Female gender chosen.");
-                    }),
-                    child: ReusableCard(
-                      rang: selectedGender == Gender.female ? activeCardColor : inactiveCardColor,
-                      cardChild: iconContent(
-                        icon: FontAwesomeIcons.venus,
-                        label: "FEMALE",
-                      ),
+                    },
+                    rang: selectedGender == Gender.female ? activeCardColor : inactiveCardColor,
+                    cardChild: iconContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: "FEMALE",
                     ),
                   ),
                 ),
@@ -92,6 +65,9 @@ class _InputPageState extends State<InputPage> {
             )),
             Expanded(
               child: ReusableCard(
+                onPress: () {
+                  
+                },
                 rang: activeCardColor,
                 cardChild: Text("Hello there"),
               ),
@@ -101,12 +77,18 @@ class _InputPageState extends State<InputPage> {
                 children: <Widget>[
                   Expanded(
                     child: ReusableCard(
+                      onPress: () {
+                        
+                      },
                       rang: activeCardColor,
                       cardChild: Text("Hello there"),
                     ),
                   ),
                   Expanded(
                     child: ReusableCard(
+                      onPress: () {
+                        
+                      },
                       rang: activeCardColor,
                       cardChild: Text("Hello there"),
                     ),
