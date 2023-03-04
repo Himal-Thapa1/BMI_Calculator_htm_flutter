@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable_card.dart';
 import 'icon_content.dart';
 import 'constants.dart';
+import 'roundIconButton.dart';
 
 enum Gender { male, female, others }
 
@@ -14,6 +15,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   int height = 170;
   int weight = 50;
+  int age = 18;
   Gender selectedGender = Gender.others;
   @override
   Widget build(BuildContext context) {
@@ -172,7 +174,55 @@ class _InputPageState extends State<InputPage> {
                     child: ReusableCard(
                       onPress: () {},
                       rang: kactiveCardColor,
-                      cardChild: Text("Hello there"),
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "AGE",
+                            style: klabelTextStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(
+                                age.toString(),
+                                style: knumberStyle,
+                              ),
+                              Text(
+                                "Y",
+                                style: klabelTextStyle,
+                              )
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              RoudnIconButton(
+                                onPress: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                },
+                                icon: FontAwesomeIcons.minus,
+                              ),
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              RoudnIconButton(
+                                onPress: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
+                                icon: FontAwesomeIcons.plus,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -187,28 +237,5 @@ class _InputPageState extends State<InputPage> {
             )
           ],
         ));
-  }
-}
-
-class RoudnIconButton extends StatelessWidget {
-  RoudnIconButton({
-    required this.icon,
-    required this.onPress,
-  });
-  final IconData icon;
-  final void Function() onPress;
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      elevation: 0.0,
-      child: Icon(icon),
-      onPressed: onPress,
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-    );
   }
 }
