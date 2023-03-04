@@ -13,6 +13,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   int height = 170;
+  int weight = 50;
   Gender selectedGender = Gender.others;
   @override
   Widget build(BuildContext context) {
@@ -117,7 +118,33 @@ class _InputPageState extends State<InputPage> {
                     child: ReusableCard(
                       onPress: () {},
                       rang: kactiveCardColor,
-                      cardChild: Text("Hello there"),
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "WEIGHT",
+                            style: klabelTextStyle,
+                          ),
+                          Text(
+                            weight.toString(),
+                            style: knumberStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RoudnIconButton(
+                                icon: FontAwesomeIcons.minus,
+                              ),
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              RoudnIconButton(
+                                icon: FontAwesomeIcons.plus,
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Expanded(
@@ -139,5 +166,24 @@ class _InputPageState extends State<InputPage> {
             )
           ],
         ));
+  }
+}
+
+class RoudnIconButton extends StatelessWidget {
+  RoudnIconButton({required this.icon});
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      elevation: 0.0,
+      child: Icon(icon),
+      onPressed: () {},
+      constraints: BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
+    );
   }
 }
