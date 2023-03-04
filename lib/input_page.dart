@@ -125,9 +125,20 @@ class _InputPageState extends State<InputPage> {
                             "WEIGHT",
                             style: klabelTextStyle,
                           ),
-                          Text(
-                            weight.toString(),
-                            style: knumberStyle,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(
+                                weight.toString(),
+                                style: knumberStyle,
+                              ),
+                              Text(
+                                "KG",
+                                style: klabelTextStyle,
+                              ),
+                            ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
