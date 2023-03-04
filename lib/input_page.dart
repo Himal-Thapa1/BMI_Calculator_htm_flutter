@@ -5,6 +5,7 @@ import 'icon_content.dart';
 import 'constants.dart';
 import 'roundIconButton.dart';
 import 'result_page.dart';
+import 'buttom_button.dart';
 
 enum Gender { male, female, others }
 
@@ -229,26 +230,12 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ReultPage()));
-            },
-            child: Container(
-              child: Center(
-                  child: Text(
-                "CALCULATE",
-                style: knumberStyle,
-              )),
-              color: kbottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double
-                  .infinity, //this code changes the bottom width to devices max device width.
-              height: kbottomContainerHeight,
-            ),
-          ),
+          BottomButton(buttonTitle: 'CALCULATE', onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> ReultPage()));
+          },),
         ],
       ),
     );
   }
 }
+
