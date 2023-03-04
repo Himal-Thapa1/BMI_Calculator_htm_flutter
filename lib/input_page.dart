@@ -133,12 +133,22 @@ class _InputPageState extends State<InputPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               RoudnIconButton(
+                                onPress: () {
+                                  setState(() {
+                                    weight--;
+                                  });
+                                },
                                 icon: FontAwesomeIcons.minus,
                               ),
                               SizedBox(
                                 width: 10.0,
                               ),
                               RoudnIconButton(
+                                onPress: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
                                 icon: FontAwesomeIcons.plus,
                               )
                             ],
@@ -170,14 +180,18 @@ class _InputPageState extends State<InputPage> {
 }
 
 class RoudnIconButton extends StatelessWidget {
-  RoudnIconButton({required this.icon});
+  RoudnIconButton({
+    required this.icon,
+    required this.onPress,
+  });
   final IconData icon;
+  final void Function() onPress;
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
       elevation: 0.0,
       child: Icon(icon),
-      onPressed: () {},
+      onPressed: onPress,
       constraints: BoxConstraints.tightFor(
         width: 56.0,
         height: 56.0,
