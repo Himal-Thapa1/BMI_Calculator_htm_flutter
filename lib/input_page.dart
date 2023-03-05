@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable_card.dart';
@@ -11,6 +13,8 @@ import 'calculator_brain.dart';
 enum Gender { male, female, others }
 
 class InputPage extends StatefulWidget {
+  const InputPage({super.key});
+
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -24,7 +28,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('BMI CALCULATOR')),
+        title: const Center(child: Text('BMI CALCULATOR')),
       ),
       body: Column(
         children: <Widget>[
@@ -41,7 +45,7 @@ class _InputPageState extends State<InputPage> {
                   rang: selectedGender == Gender.male
                       ? kactiveCardColor
                       : kinactiveCardColor,
-                  cardChild: iconContent(
+                  cardChild: const IconContent(
                     icon: FontAwesomeIcons.mars,
                     label: "MALE",
                   ),
@@ -57,7 +61,7 @@ class _InputPageState extends State<InputPage> {
                   rang: selectedGender == Gender.female
                       ? kactiveCardColor
                       : kinactiveCardColor,
-                  cardChild: iconContent(
+                  cardChild: const IconContent(
                     icon: FontAwesomeIcons.venus,
                     label: "FEMALE",
                   ),
@@ -72,7 +76,7 @@ class _InputPageState extends State<InputPage> {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     "HEIGHT",
                     style: klabelTextStyle,
                   ),
@@ -85,7 +89,7 @@ class _InputPageState extends State<InputPage> {
                         height.toString(),
                         style: knumberStyle,
                       ),
-                      Text(
+                      const Text(
                         "cm",
                         style: klabelTextStyle,
                       )
@@ -93,14 +97,14 @@ class _InputPageState extends State<InputPage> {
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                      inactiveTrackColor: Color(0xFF8D8E98),
+                      inactiveTrackColor: const Color(0xFF8D8E98),
                       activeTrackColor: Colors.white,
                       thumbColor: kbottomContainerColor,
-                      overlayColor: Color(0x29EB1555),
+                      overlayColor: const Color(0x29EB1555),
                       thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          const RoundSliderThumbShape(enabledThumbRadius: 15.0),
                       overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 30.0),
+                          const RoundSliderOverlayShape(overlayRadius: 30.0),
                     ),
                     child: Slider(
                         value: height.toDouble(),
@@ -126,7 +130,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "WEIGHT",
                           style: klabelTextStyle,
                         ),
@@ -139,7 +143,7 @@ class _InputPageState extends State<InputPage> {
                               weight.toString(),
                               style: knumberStyle,
                             ),
-                            Text(
+                            const Text(
                               "KG",
                               style: klabelTextStyle,
                             ),
@@ -156,7 +160,7 @@ class _InputPageState extends State<InputPage> {
                               },
                               icon: FontAwesomeIcons.minus,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
                             RoudnIconButton(
@@ -180,7 +184,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "AGE",
                           style: klabelTextStyle,
                         ),
@@ -193,7 +197,7 @@ class _InputPageState extends State<InputPage> {
                               age.toString(),
                               style: knumberStyle,
                             ),
-                            Text(
+                            const Text(
                               "Y",
                               style: klabelTextStyle,
                             )
@@ -211,7 +215,7 @@ class _InputPageState extends State<InputPage> {
                               },
                               icon: FontAwesomeIcons.minus,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
                             RoudnIconButton(
