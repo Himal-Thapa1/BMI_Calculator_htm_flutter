@@ -6,6 +6,7 @@ import 'constants.dart';
 import 'roundIconButton.dart';
 import 'result_page.dart';
 import 'buttom_button.dart';
+import 'calculator_brain.dart';
 
 enum Gender { male, female, others }
 
@@ -230,10 +231,36 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          BottomButton(buttonTitle: 'CALCULATE', onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> ReultPage()));
-          },),
+          BottomButton(
+            buttonTitle: 'CALCULATE',
+            onTap: () {
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(
+                        bmiResult: calc.calculateBMI(),
+                        bmiText: calc.getResult(),
+                        interpretation: calc.getInterpretation(),
+                      ),
+                ),
+              );
+            },
+          ),
         ],
+        //   BottomButton(buttonTitle: 'CALCULATE', onTap: (){
+        //     CalculatorBrain calc = CalculatorBrain(height: height, weight: weight);
+
+
+        //     Navigator.push(context, MaterialPageRoute(builder: (context)=> ReultPage(
+        //       bmiResult: calc.calculateBMI(),
+        //       resultText: calc.getResult(),
+        //       interpretation: calc.getInterpretation(),
+        //     )));
+        //   },),
+        // ],
       ),
     );
   }

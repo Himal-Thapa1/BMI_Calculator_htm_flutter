@@ -5,14 +5,13 @@ import 'package:flutter/material.dart';
 import 'result_page.dart';
 import 'calculator_brain.dart';
 
-class ReultPage extends StatelessWidget {
+class ResultPage extends StatelessWidget {
 
   ResultPage({required this.interpretation, required this.bmiResult, required this.bmiText});
   final String bmiResult;
   final String bmiText;
   final String interpretation;
 
-  const ReultPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +42,14 @@ class ReultPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Normal",
+                    bmiResult.toUpperCase(),
                     style: kResultTextStyle,
                   ),
-                  Text("15.8",
+                  Text(
+                    bmiText.toString(),
                   style: kBMITextStyle,),
                   Text(
-                    "Your BMI result is normal",
+                    interpretation,
                     textAlign: TextAlign.center,
                     style: kBodyTextStyle,
                   )
